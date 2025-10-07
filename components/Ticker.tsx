@@ -130,7 +130,7 @@ export function Ticker() {
         setTickerImages(processedImages)
       } catch (error) {
         console.error("Error loading ticker images:", error)
-        setError("Failed to load images. Please try again later.")
+        // Don't show error message, just log it
       } finally {
         setIsLoading(false)
       }
@@ -143,8 +143,9 @@ export function Ticker() {
     return <div className="text-center py-4">Loading...</div>
   }
 
+  // Don't show error messages, just return empty div if there's an error
   if (error) {
-    return <div className="text-center text-red-500 py-4">{error}</div>
+    return <div></div>
   }
 
   return (
