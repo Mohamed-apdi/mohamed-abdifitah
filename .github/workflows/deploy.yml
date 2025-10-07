@@ -38,26 +38,15 @@ jobs:
       - name: Build project
         run: pnpm run build
         
-      - name: Prepare static files
+      - name: Add .nojekyll file
+        run: touch out/.nojekyll
+        
+      - name: List build output
         run: |
-          mkdir -p out
-          # Copy static HTML files from server directory
-          cp -r .next/server/app/* out/ 2>/dev/null || true
-          # Copy static assets to maintain _next directory structure
-          mkdir -p out/_next
-          cp -r .next/static out/_next/ 2>/dev/null || true
-          # Copy public assets
-          cp -r public/* out/ 2>/dev/null || true
-          # Ensure we have an index.html
-          if [ ! -f "out/index.html" ]; then
-            echo "Creating fallback index.html"
-            echo '<!DOCTYPE html><html><head><title>Portfolio</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><h1>Portfolio Loading...</h1><script>window.location.href="/";</script></body></html>' > out/index.html
-          fi
-          # List contents for debugging
-          echo "=== out directory structure ==="
-          find out -type f -name "*.css" -o -name "*.js" -o -name "*.html" | head -20
-          echo "=== _next directory structure ==="
-          find out/_next -type f | head -10 || echo "No _next directory found"
+          echo "=== Checking out directory ==="
+          ls -la out/ || echo "No out directory found"
+          echo "=== Checking for HTML files ==="
+          find out -name "*.html" -type f | head -5 || echo "No HTML files found"
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
