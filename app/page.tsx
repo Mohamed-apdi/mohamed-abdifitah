@@ -143,11 +143,22 @@ function CTAButtons({ isLoaded }: { isLoaded: boolean }) {
           </g>
         </svg>
       </Button>
-      <Button variant="ghost" className="w-full sm:w-auto gap-2 justify-center sm:justify-start">
+      <Button 
+        variant="ghost" 
+        className="w-full sm:w-auto gap-2 justify-center sm:justify-start"
+        onClick={() => {
+          const link = document.createElement('a');
+          link.href = '/mohamed-abdifitah/Mohamed Resume 2025 07.10.25.pdf';
+          link.download = 'Mohamed_Abdifitaah_Resume.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}
+      >
         <span className="h-[13px] w-[13px] rounded-full bg-[#05df7233] flex items-center justify-center overflow-hidden">
           <span className="h-1.5 w-1.5 rounded-full bg-[#05df72] animate-scale-in" />
         </span>
-        <span className="text-[13px] leading-5 text-neutral-900 dark:text-gray-100">Available for Now</span>
+        <span className="text-[13px] leading-5 text-neutral-900 dark:text-gray-100">Resume</span>
       </Button>
     </div>
   )
