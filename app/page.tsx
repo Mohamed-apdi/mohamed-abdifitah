@@ -144,8 +144,8 @@ function CTAButtons({ isLoaded }: { isLoaded: boolean }) {
         </svg>
       </Button>
       <Button 
-        variant="ghost" 
-        className="w-full sm:w-auto gap-2 justify-center sm:justify-start"
+        variant="outline"
+        className="w-full sm:w-auto gap-2 justify-center sm:justify-start border-2 border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200"
         onClick={() => {
           window.open('/mohamed-abdifitah/Mohamed Resume 2025 07.10.25.pdf', '_blank');
         }}
@@ -153,7 +153,7 @@ function CTAButtons({ isLoaded }: { isLoaded: boolean }) {
         <span className="h-[13px] w-[13px] rounded-full bg-[#05df7233] flex items-center justify-center overflow-hidden">
           <span className="h-1.5 w-1.5 rounded-full bg-[#05df72] animate-scale-in" />
         </span>
-        <span className="text-[13px] leading-5 text-neutral-900 dark:text-gray-100">Resume</span>
+        <span className="text-[13px] leading-5 font-medium text-neutral-900 dark:text-gray-100">Resume</span>
       </Button>
     </div>
   )
