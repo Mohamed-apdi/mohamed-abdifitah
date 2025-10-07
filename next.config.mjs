@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  basePath: '/mohamed-abdifitah',
+  assetPrefix: '/mohamed-abdifitah/',
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   eslint: {
