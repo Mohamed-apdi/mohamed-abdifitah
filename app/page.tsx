@@ -147,12 +147,7 @@ function CTAButtons({ isLoaded }: { isLoaded: boolean }) {
         variant="ghost" 
         className="w-full sm:w-auto gap-2 justify-center sm:justify-start"
         onClick={() => {
-          const link = document.createElement('a');
-          link.href = '/mohamed-abdifitah/Mohamed Resume 2025 07.10.25.pdf';
-          link.download = 'Mohamed_Abdifitaah_Resume.pdf';
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
+          window.open('/mohamed-abdifitah/Mohamed Resume 2025 07.10.25.pdf', '_blank');
         }}
       >
         <span className="h-[13px] w-[13px] rounded-full bg-[#05df7233] flex items-center justify-center overflow-hidden">
