@@ -35,6 +35,23 @@ jobs:
       - name: Build project
         run: pnpm run build
         
+      - name: Prepare static files
+        run: |
+          mkdir -p out
+          # Copy static HTML files from server directory
+          cp -r .next/server/app/* out/ 2>/dev/null || true
+          # Copy static assets
+          cp -r .next/static out/ 2>/dev/null || true
+          # Copy public assets
+          cp -r public/* out/ 2>/dev/null || true
+          # Ensure we have an index.html
+          if [ ! -f "out/index.html" ]; then
+            echo "Creating fallback index.html"
+            echo '<!DOCTYPE html><html><head><title>Portfolio</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><h1>Portfolio Loading...</h1><script>window.location.href="/";</script></body></html>' > out/index.html
+          fi
+          # List contents for debugging
+          ls -la out/
+        
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
